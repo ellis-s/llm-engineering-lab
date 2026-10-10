@@ -14,13 +14,12 @@ logger = logging.getLogger(__name__)
 # 自定义错误处理器，返回的错误信息格式保持统一。
 @app.exception_handler(RequestValidationError)
 async def validation_error_handler(
-    request, exc: RequestValidationError
+    request: Request, exc: RequestValidationError
 ) -> JSONResponse:
 
-    print(exc.errors())
     details = [
         {
-            "filed": ".".join(str(part) for part in error["loc"]),
+            "field": ".".join(str(part) for part in error["loc"]),
             "message": error["msg"],
         }
         for error in exc.errors()
