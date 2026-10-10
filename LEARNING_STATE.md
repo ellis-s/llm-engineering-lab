@@ -30,12 +30,15 @@
 
 - 状态更新时间：2026-10-10
 - 当前阶段：第 1 周「基础重建」—— Python 工程、FastAPI、HTTP/SSE、pytest。
-- 当前日：Day 2（待开始）。Day 1 原计划日期为 2026-09-24，实际完成日期为 2026-10-10；后续按实际学习进度推进，不自动跳过计划日。
-- 最近完成：Day 1 Python 工程基础（typing / dataclass / Pydantic / 异常）、uv 项目骨架、配置加载与校验、日志入口。
+- 当前日：Day 3（待开始）。Day 1 和 Day 2 原计划日期分别为 2026-09-24、2026-09-25，实际均于 2026-10-10 完成；后续按实际学习进度推进，不自动跳过计划日。
+- 最近完成：Day 2 HTTP/REST 与 FastAPI，完成 `/health`、`/echo`、`/chat` 三个接口，验证正常响应及参数/请求体校验错误。
+- Day 2 交付：`01-python-backend/01-fastapi/day02_api/main.py`；提交 `18e831b feat: add day2 code`。
+- 最近完成的基础：Day 1 Python 工程基础（typing / dataclass / Pydantic / 异常）、uv 项目骨架、配置加载与校验、日志入口。
 - Day 1 交付：`pyproject.toml`、`.env.example`、`.gitignore`、`src/llm_engineering_lab/` 配置与日志模块、`01-python-backend/00-python-engineering/day1_concepts.py`；提交 `81b4949 feat: add day1 content`。
-- 已完成：学习仓库已创建；V2.1 Excel 已放入仓库；Day 1 代码运行与配置校验已验收；学员能解释源码目录与练习目录的区别、typing 与 Pydantic 的区别，以及 Pydantic 与 dataclass 的职责。
-- 进行中：Day 2 尚未开始。
+- 已完成：学习仓库已创建；V2.1 Excel 已放入仓库；Day 1 和 Day 2 代码与对应验收已完成。
+- 进行中：Day 3 尚未开始。
 - 阻塞/疑问：暂无已记录事项。
+- 仓库清理待办：Day 2 提交中误包含 `__pycache__/main.cpython-312.pyc`；后续从 Git 中移除缓存文件，并在 `.gitignore` 忽略 `__pycache__/`。
 - 进度口径：以实际完成和验收为准；Excel 中的日期是原计划日期，若需整体顺延，后续明确调整后再同步计划表。
 
 ## 14 周路线与阶段交付
@@ -85,6 +88,7 @@
 | 日期 / Day | 完成情况 | 产出与验收 | 问题 / 下一步 |
 |---|---|---|---|
 | 2026-10-10 / Day 1（原计划 2026-09-24） | 完成 | 骨架、配置校验、日志和概念练习完成；入口及练习脚本运行正常；提交 `81b4949` | 下一步：Day 2 HTTP/REST 与 FastAPI |
+| 2026-10-10 / Day 2（原计划 2026-09-25） | 完成 | `/health`、`/echo`、`/chat`；验证成功响应、缺失查询参数与请求体校验；提交 `18e831b` | 清理误提交的 `__pycache__` 并更新 `.gitignore`；下一步 Day 3 |
 
 ## 新聊天窗口续接说明
 
