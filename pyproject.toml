@@ -1,7 +1,7 @@
 [project]
 name = "llm-engineering-lab"
 version = "0.1.0"
-description = "Add your description here"
+description = "用于学习Python以及LLM应用开发的实验室"
 readme = "README.md"
 authors = [
     { name = "ellis", email = "hongfeisir@163.com" }

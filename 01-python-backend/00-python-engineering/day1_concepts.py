@@ -4,15 +4,16 @@
 from dataclasses import dataclass, field
 from typing import Literal
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field, ValidationError
 
 
 def build_greeting(name: str) -> str:
     return f"hello {name}"
 
 
-print(build_greeting("world"))
+print(build_greeting("ellis"))
 
+# 故意演示，Python在运行时不会自动检查输入类型
 print(build_greeting(123))
 
 
@@ -20,9 +21,15 @@ print(build_greeting(123))
 def str_to_int(value: str) -> int:
     try:
         return int(value)
-    except ValueError:
-        print(f"输入错误{value}")
-        return 0
+    except ValueError as exc:
+        raise ValueError(f"输入必须是整数，收到：{value!r}") from exc
+
+
+print(str_to_int("45"))
+try:
+    print(str_to_int("test"))
+except ValueError as exc:
+    print(f"转换失败：{exc}")
 
 
 # dataclass
@@ -52,95 +59,41 @@ lab = LLMEngineeringLab(
     description="LLM-Engineering-Lab",
     url="https://github.com/LLM-Engineering-Lab/LLM-Engineering-Lab",
 )
+lab1 = LLMEngineeringLab(
+    name="LLM-Engineering-Lab",
+    description="LLM-Engineering-Lab",
+    url="https://github.com/LLM-Engineering-Lab/LLM-Engineering-Lab",
+)
 print(f"lab = {lab}")
-
-# class 私有属性
-"""
-在 python 的类中，只有公共属性和方法、私有属性和方法。 没有 protected 属性。 
-私有属性：使用  _变量名 形式。 仅在类内部和子类内部访问。
-
-继承：
-私有属性和私有方法无法被继承
-
-"""
+print(lab == lab1)
 
 
-class Girl:
-    def __init__(self, name) -> None:
-
-        self.__name__ = name
-        # 私有属性：使用  __变量名 形式。 只能在类内部访问，实例对象无法访问。
-        self.__age = 18
-
-    def get_age(self):
-        # 通过函数获取私有属性的好处是，可以在函数中做权限控制
-        return self.__age
+@dataclass
+class Student:
+    name: str
+    target_role: str
 
 
-girl = Girl("小花")
-print(girl.__name__)
-
-try:
-    print(girl.__age)  # 会报错
-except AttributeError as e:
-    # raise AttributeError("无法在类外部获取私有属性") from e
-    print(e)
-
-print(girl.get_age())
-
-
-# 父类
-class Animal:
-    def __init__(self, name, age) -> None:
-        self.name = name
-        self.age = age
-
-    def get_age(self):
-        return self.age
-
-
-# 子类
-class Dog(Animal):
-    def __init__(self, name, age) -> None:
-        super().__init__(name, age)
-
-
-print(Dog.__mro__)
-dog = Dog("小花狗", 2)
-print(dog.name)
-print(dog.get_age())
-
-
-## 多继承
-"""
-1. 就近原则
-
-
-class A:
-    def __init__(self) -> None:
-        pass
-
-
-class B:
-    def __init__(self) -> None:
-        pass
-
-
-class C(A, B):
-    def __init__(self) -> None:
-        super().__init__()
-        pass
-"""
+student = Student("Ellis", "LLM 应用开发工程师")
+print(student)
 
 
 # pydantic
 class ChatMessage(BaseModel):
     role: Literal["system", "user", "assistant"]
     content: str
-    temperature: float
+    temperature: float = Field(ge=0, le=2)
 
 
 question = ChatMessage.model_validate(
     {"role": "user", "content": "hello world", "temperature": 0.8}
 )
 print(question)
+
+try:
+    question2 = ChatMessage.model_validate(
+        {"role": "ai", "content": "hello world", "temperature": 1}
+    )
+    print(question2)
+except ValidationError as e:
+    print(e)
