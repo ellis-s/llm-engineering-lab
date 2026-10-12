@@ -109,6 +109,8 @@ def get_chat_service() -> ChatService:
 
 """
 Annotated: 是用来给类型附加额外的元数据的。 然后 通过 from typing import get_args 可以获取到这个元数据。有些框架就会利用这个元数据当做一个参数使用。
+
+Depends 是一个依赖注入的装饰器，它可以用来注入参数。
 """
 
 
