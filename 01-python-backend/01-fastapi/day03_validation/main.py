@@ -76,6 +76,23 @@ async def unexception_error_handler(request: Request, exc: Exception) -> JSONRes
     )
 
 
+# 中间件执行顺序是洋葱模型。 call_next 之前是自下而上， call_next 之后是自上而下
+@app.middleware("http")
+async def log_request1(request: Request, call_next):
+    print(f"log_request1:::{request.method} {request.url.path}")
+    result = await call_next(request)
+    print("log_request1  end!")
+    return result
+
+
+@app.middleware("http")
+async def log_request2(request: Request, call_next):
+    print(f"log_request2==={request.method} {request.url.path}")
+    result = await call_next(request)
+    print("log_request2  end!")
+    return result
+
+
 class ChatMessage(BaseModel):
     message: str = Field(min_length=1, max_length=2000)
 
