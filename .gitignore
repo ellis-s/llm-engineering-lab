@@ -6,3 +6,8 @@
 !.env.example
 
 __pycache__/
+
+# 测试用例
+.coverage
+.coverage.*
+htmlcov/

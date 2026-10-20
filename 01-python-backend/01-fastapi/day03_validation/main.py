@@ -123,3 +123,8 @@ def chat(
         raise HTTPException(status_code=400, detail="message can not be empty")
 
     return {"reply": service.reply(request.message)}
+
+
+@app.get("/health")
+def check_health() -> dict[str, str]:
+    return {"status": "ok"}

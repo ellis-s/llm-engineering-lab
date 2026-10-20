@@ -30,7 +30,7 @@
 
 - 状态更新时间：2026-10-12
 - 当前阶段：第 1 周「基础重建」—— Python 工程、FastAPI、HTTP/SSE、pytest。
-- 当前日：Day 5（进行中）。Day 1-3 的原计划日期为 2026-09-24 至 2026-09-26，实际均于 2026-10-10 完成；后续按实际学习进度推进，不自动跳过计划日。
+- 当前日：Day 7（进行中）。Day 1-3 的原计划日期为 2026-09-24 至 2026-09-26，实际均于 2026-10-10 完成；后续按实际学习进度推进，不自动跳过计划日。
 - 最近完成：Day 3 FastAPI 依赖注入、Pydantic 请求校验和统一异常响应；验证空消息返回结构化 `422`，业务错误及未预期错误使用稳定响应格式。
 - Day 3 交付：`01-python-backend/01-fastapi/day03_validation/main.py`；提交 `3dd25ac` 与修正提交 `90ef3fc`，已推送至 `origin/main`。
 - 最近完成的基础：Day 2 HTTP/REST 与 FastAPI，完成 `/health`、`/echo`、`/chat` 三个接口，验证正常响应及参数/请求体校验错误。
@@ -39,7 +39,9 @@
 - Day 1 交付：`pyproject.toml`、`.env.example`、`.gitignore`、`src/llm_engineering_lab/` 配置与日志模块、`01-python-backend/00-python-engineering/day1_concepts.py`；提交 `81b4949 feat: add day1 content`。
 - 已完成：学习仓库已创建；V2.1 Excel 已放入仓库；Day 1、Day 2 和 Day 3 代码与对应验收已完成。
 - 最近完成：Day 4 asyncio/httpx，完成异步并发请求、timeout 与有限重试练习；学员确认实验无问题。
-- 进行中：Day 5 SSE 流式响应、心跳和客户端断开清理。
+- 最近完成：Day 5 FastAPI SSE 模拟 token 流、SSE 事件格式及浏览器 EventSource 消费练习。
+- 最近完成：Day 6 pytest API 测试；测试文件包含 10 个测试函数，已生成覆盖率数据。
+- 进行中：Day 7 第一周周测，从空目录独立重建 Chat API、测试、README 与架构图。
 - 阻塞/疑问：暂无已记录事项。
 - 仓库清理：已从 Git 移除 Day 2 误提交的 `__pycache__/main.cpython-312.pyc`，并在 `.gitignore` 忽略 `__pycache__/`；提交 `4c1d1c7`。
 - 进度口径：以实际完成和验收为准；Excel 中的日期是原计划日期，若需整体顺延，后续明确调整后再同步计划表。
@@ -94,6 +96,8 @@
 | 2026-10-10 / Day 2（原计划 2026-09-25） | 完成 | `/health`、`/echo`、`/chat`；验证成功响应、缺失查询参数与请求体校验；提交 `18e831b` | 已清理误提交的 `__pycache__` 并更新 `.gitignore`；下一步 Day 3 |
 | 2026-10-10 / Day 3（原计划 2026-09-26） | 完成 | FastAPI 依赖注入、请求字段约束、校验/HTTP/未预期异常统一响应；空消息 `422` 响应经检查；提交并推送 `90ef3fc` | 下一步：Day 4 asyncio/httpx、并发请求与超时 |
 | 2026-10-12 / Day 4（原计划 2026-09-27） | 完成 | asyncio/httpx 异步并发客户端；加入 timeout 与有限重试，学员确认无问题 | 下一步：Day 5 SSE 流式响应 |
+| 2026-10-12 / Day 5（原计划 2026-09-28） | 完成 | FastAPI SSE 模拟 token 流、事件格式、心跳注释及浏览器 EventSource 消费 | 下一步：Day 6 pytest |
+| 2026-10-12 / Day 6（原计划 2026-09-29） | 完成 | 编写 10 个 API/服务测试函数；配置并生成覆盖率数据 | 下一步：Day 7 第一周周测 |
 
 ## 新聊天窗口续接说明
 
